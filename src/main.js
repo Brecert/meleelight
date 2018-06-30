@@ -35,6 +35,7 @@ import 'characters/puff/puffAttributes.js';
 import 'characters/puff/puffMultiJumpDrift.js';
 import 'characters/puff/puffNextJump.js';
 import 'characters/shared/moves';
+import 'characters/shared/attributes.js';
 import 'main/util/Box2D.js';
 import 'main/util/createHitBox.js';
 import 'main/util/createHitboxObject.js';

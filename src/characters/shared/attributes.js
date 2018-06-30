@@ -5,6 +5,7 @@ import {
 } from "main/characters";
 
 export const globalAttributes = {
+  multiJump: true,
 };
 
 export function setGlobalAttributes(val){
