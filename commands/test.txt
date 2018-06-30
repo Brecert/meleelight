@@ -1,0 +1,13 @@
+1
+2
+3
+4
+5
+CAT.init(p, true, input);
+articles.LASER.init({
+  p: p,
+  x: 8,
+  y: 9,
+  rotate: 0,
+  isFox: false
+});
