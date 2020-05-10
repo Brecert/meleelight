@@ -13,10 +13,6 @@
     "postinstall": " npm run animations && npm run build ",
     "rebuild": "./node_modules/.bin/electron-rebuild  -w uws"
   },
-  "engines": {
-    "node": "8.9.1",
-    "npm": "5.5.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/schmooblidon/meleelight.git"
