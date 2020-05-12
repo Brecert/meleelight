@@ -154,8 +154,11 @@ export function hitDetect (p,input){
 
 export function setHasHit (p,j){
   // for turbo mode. if not a grab and not counter and not a midthrow hitbox.
-  if (player[p].hitboxes.id[j].type != 2 && player[p].hitboxes.id[j].type != 6 && player[p].actionState.substr(0, 5) !=
-    "THROW") {
+  if (
+    player[p].hitboxes.id[j].type != 2 && 
+    player[p].hitboxes.id[j].type != 6 && 
+    player[p].actionState.substr(0, 5) != "THROW"
+  ) {
     player[p].hasHit = true;
   }
 }
