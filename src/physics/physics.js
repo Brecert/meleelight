@@ -411,6 +411,8 @@ export function land(i: number, newPosition: Vec2D
   player[i].rotationPoint = new Vec2D(0, 0);
   player[i].colourOverlayBool = false;
   player[i].hitboxes.active = [false, false, false, false];
+  player[i].canAirdodge = true
+  // console.log(i, 'landed')
 
   let newNormal = normal;
   if (newNormal === null || newNormal === undefined || (newNormal.x === 0 && newNormal.y === 0)) {
@@ -934,7 +936,7 @@ function dealWithLedges(i: number, input: any): void {
           }
         }
       }
-      if (player[i].phys.cVel.y < 0 && input[i][0].lsY > -0.5) {
+      if (player[i].phys.cVel.y <= 10 && input[i][0].lsY > -0.5) {
         if (lsBF > -1) {
           foundLedge = activeStage.ledge[lsBF];
           if (foundLedge[2] * -2 + 1 === player[i].phys.face || actionStates[characterSelections[i]][player[i].actionState].canGrabLedge[1]) {
