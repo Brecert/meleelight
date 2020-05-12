@@ -43,27 +43,51 @@ export function drawArrayPathCompress (can, col, face, tX, tY, path, scaleX, sca
     can.rotate(rotate);
 
     can.fillStyle = col;
+    can.strokeStyle = col;
+    can.lineCap = 'round';
+    can.lineJoin = 'bevel'
+    can.lineWidth = ((scaleX+scaleY)/2)+2
     can.beginPath();
     // for each shape
   if(path !== undefined && path !== null && path.length !== undefined) {
 
-
+    let lastRand = 0
+    const rand = () => Math.random() * 2.5
 
     for (var j = 0; j < path.length; j++) {
         // first 2 numbers are starting vector points
-        var x = (path[j][0] * scaleX * face) + rpX;
-        var y = (path[j][1] * scaleY) + rpY;
+        var x = rand() + (path[j][0] * scaleX * face) + rpX;
+        var y = rand() + (path[j][1] * scaleY) + rpY;
         can.moveTo(x, y);
         // starting from index 2, each set of 6 numbers are bezier curve coords
         for (var k = 2; k < path[j].length; k += 6) {
-            can.bezierCurveTo((path[j][k] * scaleX * face) + rpX, (path[j][k + 1] * scaleY) + rpY, (path[j][k + 2] * scaleX *
-                face) + rpX, (path[j][k + 3] * scaleY) + rpY, (path[j][k + 4] * scaleX * face) + rpX, (path[j][k + 5] *
-                scaleY) + rpY);
+            // can.bezierCurveTo(
+            //     (path[j][k + 0] * scaleX * face) + rpX,
+            //     (path[j][k + 1] * scaleY) + rpY,
+            //     (path[j][k + 2] * scaleX * face) + rpX,
+            //     (path[j][k + 3] * scaleY) + rpY,
+            //     (path[j][k + 4] * scaleX * face) + rpX,
+            //     (path[j][k + 5] * scaleY) + rpY
+            // );
+            // can.bezierCurveTo(
+            //     rand() + (path[j][k + 0] * scaleX * face) + rpX,
+            //     rand() + (path[j][k + 1] * scaleY) + rpY,
+            //     rand() + (path[j][k + 2] * scaleX * face) + rpX,
+            //     rand() + (path[j][k + 3] * scaleY) + rpY,
+            //     rand() + (path[j][k + 4] * scaleX * face) + rpX,
+            //     rand() + (path[j][k + 5] * scaleY) + rpY
+            // );
+            can.quadraticCurveTo(
+                rand() + (path[j][k + 0] * scaleX * face) + rpX,
+                rand() + (path[j][k + 1] * scaleY) + rpY,
+                rand() + (path[j][k + 2] * scaleX * face) + rpX,
+                rand() + (path[j][k + 3] * scaleY) + rpY,
+            )
         }
     }
   }
     can.closePath();
-    can.fill();
+    can.stroke();
     can.restore();
 }
 
