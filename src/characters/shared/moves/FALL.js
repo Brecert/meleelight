@@ -10,13 +10,13 @@ export default {
   canBeGrabbed : true,
   landType : 0,
   vCancel : true,
-  init : function(p,input,disableInputs = false){
+  init : function(p, input, disableInputs = false){
     player[p].actionState = "FALL";
     player[p].timer = 0;
     turnOffHitboxes(p);
     actionStates[characterSelections[p]].FALL.main(p,input,disableInputs);
   },
-  main : function(p,input,disableInputs = false){
+  main : function(p, input, disableInputs = false){
     player[p].timer++;
     if (disableInputs){
       player[p].phys.cVel.y -= player[p].charAttributes.gravity;
@@ -36,7 +36,7 @@ export default {
       actionStates[characterSelections[p]][a[1]].init(p,input);
       return true;
     }
-    else if ((input[p][0].l && !input[p][1].l) || (input[p][0].r && !input[p][1].r)){
+    else if (player[p].canAirdodge && ((input[p][0].l && !input[p][1].l) || (input[p][0].r && !input[p][1].r))){
       actionStates[characterSelections[p]].ESCAPEAIR.init(p,input);
       return true;
     }

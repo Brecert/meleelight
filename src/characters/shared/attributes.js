@@ -5,7 +5,7 @@ import {
 } from "main/characters";
 
 export const globalAttributes = {
-	// multiJump: true
+	canAirdodge: true
 };
 
 export function setGlobalAttributes(val){
