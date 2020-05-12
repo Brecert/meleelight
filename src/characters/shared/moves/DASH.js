@@ -60,7 +60,17 @@ export default {
   },
   interrupt : function(p,input){
     const j = checkForJump(p,input);
-    if (input[p][0].l || input[p][0].r){
+
+    // trip player
+    if(player[p].timer === 1 && Math.random() > 0.9) {
+      for(let i = 0; i < 10; i++) {
+        actionStates[characterSelections[p]].DASH.main(p,input);
+      }
+      sounds.roll.play();
+      actionStates[characterSelections[p]].DOWNDAMAGE.init(p,input);
+      return true
+    }
+    else if (input[p][0].l || input[p][0].r){
       player[p].phys.cVel.x *= 0.25;
       actionStates[characterSelections[p]].GUARDON.init(p,input);
       return true;
