@@ -1,6 +1,6 @@
 
 import WAIT from "characters/shared/moves/WAIT";
-import FALLSPECIAL from "characters/shared/moves/FALLSPECIAL";
+import FALL from "characters/shared/moves/FALL";
 import LANDINGFALLSPECIAL from "characters/shared/moves/LANDINGFALLSPECIAL";
 import {articles} from "physics/article";
 import {sounds} from "main/sfx";
@@ -107,7 +107,7 @@ export default {
         WAIT.init(p,input);
       }
       else {
-        FALLSPECIAL.init(p,input);
+        FALL.init(p,input);
       }
       return true;
     }
